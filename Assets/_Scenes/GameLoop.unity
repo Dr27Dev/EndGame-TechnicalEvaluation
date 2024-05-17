@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922cf8e793a084445a0152c52577bb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runningSpeed: 10
+  _runningSpeed: 13
   _shootingMoveSpeed: 8
   _gravity: 9.81
 --- !u!143 &198127347
@@ -486,9 +486,9 @@ MonoBehaviour:
     type: 3}
   _bulletSpawnPos: {fileID: 1510792821}
   _bulletsParent: {fileID: 241075235}
-  _attackSpeed: 8
+  _attackSpeed: 7
   _bulletSpeed: 30
-  _shootDelay: 0.3
+  _shootDelay: 0.4
 --- !u!1 &241075234
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,6 +2314,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.16
       objectReference: {fileID: 0}
+    - target: {fileID: 5401207067271929861, guid: e538fdbe39249764dbd2225cceb3b35d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 148e6935ebd9e204eb48e69181015d64, type: 2}
     - target: {fileID: 5514273640745063294, guid: e538fdbe39249764dbd2225cceb3b35d,
         type: 3}
       propertyPath: m_IsActive
@@ -2324,6 +2329,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.16
       objectReference: {fileID: 0}
+    - target: {fileID: 9065174660534638615, guid: e538fdbe39249764dbd2225cceb3b35d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 148e6935ebd9e204eb48e69181015d64, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2367,6 +2377,6 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 198127343}
   - {fileID: 1879988921}
-  - {fileID: 1755920865}
   - {fileID: 241075235}
   - {fileID: 1581070675}
+  - {fileID: 1755920865}
