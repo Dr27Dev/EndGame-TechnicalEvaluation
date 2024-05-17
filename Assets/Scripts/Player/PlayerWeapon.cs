@@ -1,36 +1,91 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
-    private PlayerMobileInput _mobileInput;
-    private PlayerStandaloneInput _standaloneInput; 
-    private CharacterController _characterController;
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _bulletSpawnPos;
+    [SerializeField] private Transform _bulletsParent;
+    private readonly List<Bullet> _bullets = new List<Bullet>();
     
-    [SerializeField] private float _rotationSpeed = 10;
-    [SerializeField] private Animator _animator;
+    [SerializeField] private float _attackSpeed = 2f;
+    [SerializeField] private float _bulletSpeed = 10f;
+    [SerializeField] private float _shootDelay = 0.5f;
 
-    private void Awake()
+    private PlayerController _playerController;
+    private float _shootTimer;
+    private bool _isShooting;
+    private bool _initialShot;
+
+    private void Awake() => _playerController = GetComponent<PlayerController>();
+
+    private void Start()
     {
-        _mobileInput = GetComponent<PlayerMobileInput>();
-        _standaloneInput = GetComponent<PlayerStandaloneInput>();
-        _characterController = GetComponent<CharacterController>();
+        _shootTimer = 0f;
+        _isShooting = false;
+        _initialShot = false;
+        InitPool(20);
     }
 
     private void Update()
     {
-        Vector3 inputAxis = new Vector3(GetShootAxis().x, 0, GetShootAxis().y);
+        _shootTimer += Time.deltaTime;
 
-        if (inputAxis != Vector3.zero)
+        if (_playerController.IsShooting && !_initialShot)
         {
-            Quaternion rotation = Quaternion.LookRotation(-inputAxis);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, _rotationSpeed * Time.deltaTime);
-            _animator.SetBool("Shooting", true);
+            _initialShot = true;
+            StartCoroutine(ShootWithInitialDelay(_shootDelay));
         }
-        else _animator.SetBool("Shooting", false);
+
+        if (_playerController.IsShooting && _initialShot && _shootTimer >= 1 / _attackSpeed && !_isShooting)
+        {
+            Shoot();
+            _shootTimer = 0f;
+        }
+
+        if (!_playerController.IsShooting) _initialShot = false;
     }
 
-    private Vector2 GetShootAxis()
-    { return GameManager.Instance.IsMobile ? _mobileInput.ShootAxis : _standaloneInput.ShootAxis; }
+    private IEnumerator ShootWithInitialDelay(float delay)
+    {
+        _isShooting = true;
+        yield return new WaitForSeconds(delay);
+        Shoot();
+        _isShooting = false;
+    }
+
+    private void Shoot()
+    {
+        Bullet bullet = GetBulletFromPool();
+        bullet.ShotBullet(_bulletSpawnPos, _bulletSpeed);
+        if (!GameManager.Instance.IsMobile)
+            _playerController.StandaloneInput.RumblePulse(0.1f, 1f, 0.1f);
+    }
+    
+    private void InitPool(int poolSize)
+    {
+        for (int i = 0; i < poolSize; ++i)
+        {
+            GameObject bullet = Instantiate(_bulletPrefab, _bulletSpawnPos.position, _bulletSpawnPos.rotation);
+            bullet.transform.SetParent(_bulletsParent);
+            bullet.SetActive(false);
+            _bullets.Add(bullet.GetComponent<Bullet>());
+        }
+    }
+
+    private Bullet GetBulletFromPool()
+    {
+        Bullet bullet = _bullets.Find(b => !b.gameObject.activeSelf);
+        if (bullet == null)
+        {
+            GameObject newBullet = Instantiate(_bulletPrefab, _bulletSpawnPos.position, _bulletSpawnPos.rotation);
+            bullet = newBullet.GetComponent<Bullet>();
+            _bullets.Add(bullet);
+        }
+        bullet.gameObject.SetActive(true);
+        bullet.transform.position = _bulletSpawnPos.position;
+        bullet.transform.rotation = _bulletSpawnPos.rotation;
+        return bullet;
+    }
 }

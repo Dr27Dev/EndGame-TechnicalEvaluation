@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 
@@ -27,6 +28,12 @@ public class PlayerMobileInput : MonoBehaviour
         ETouch.Touch.onFingerUp -= HandleFingerUp;
         ETouch.Touch.onFingerMove -= HandleFingerMove;
         ETouch.EnhancedTouchSupport.Disable();
+    }
+
+    private void Awake()
+    {
+        _moveStick.gameObject.SetActive(false);
+        _shootStick.gameObject.SetActive(false);
     }
 
     private void HandleFingerDown(ETouch.Finger finger)
@@ -101,4 +108,3 @@ public class PlayerMobileInput : MonoBehaviour
         return screenPosition;
     }
 }
-
