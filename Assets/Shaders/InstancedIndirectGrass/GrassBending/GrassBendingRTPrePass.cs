@@ -8,6 +8,7 @@ public class GrassBendingRTPrePass : ScriptableRendererFeature
     {
         static readonly int _GrassBendingRT_pid = Shader.PropertyToID("_GrassBendingRT");
         static readonly RenderTargetIdentifier _GrassBendingRT_rti = new RenderTargetIdentifier(_GrassBendingRT_pid);
+        private static readonly RTHandle _grassBendingRTHandle = RTHandles.Alloc(_GrassBendingRT_rti, "_GrassBendingRT");
         ShaderTagId GrassBending_stid = new ShaderTagId("GrassBending");
 
         // This method is called before executing the render pass.
@@ -20,7 +21,7 @@ public class GrassBendingRTPrePass : ScriptableRendererFeature
             //512*512 is big enough for this demo's max grass count, can use a much smaller RT in regular use case
             //TODO: make RT render pos follow main camera view frustrum, allow using a much smaller size RT
             cmd.GetTemporaryRT(_GrassBendingRT_pid, new RenderTextureDescriptor(512, 512, RenderTextureFormat.R8,0));
-            ConfigureTarget(_GrassBendingRT_rti);
+            ConfigureTarget(_grassBendingRTHandle);
             ConfigureClear(ClearFlag.All, Color.white);
         }
 
