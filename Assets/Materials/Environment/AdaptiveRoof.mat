@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AdaptiveRoof_A
+  m_Name: AdaptiveRoof
   m_Shader: {fileID: -6465566751694194690, guid: 1b61fdaa3373ed8458c0dd27963fff2d,
     type: 3}
   m_Parent: {fileID: 0}
