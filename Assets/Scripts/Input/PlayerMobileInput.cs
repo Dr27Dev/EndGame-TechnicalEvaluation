@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 
@@ -34,6 +35,11 @@ public class PlayerMobileInput : MonoBehaviour
     {
         _moveStick.gameObject.SetActive(false);
         _shootStick.gameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        if (!GameManager.Instance.IsMobile) enabled = false;
     }
 
     private void HandleFingerDown(ETouch.Finger finger)

@@ -42,7 +42,7 @@ ParticleSystem:
   m_GameObject: {fileID: 202134350415190266}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -4939,7 +4939,7 @@ ParticleSystem:
   m_GameObject: {fileID: 228566699314466958}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -9836,7 +9836,7 @@ ParticleSystem:
   m_GameObject: {fileID: 880601579569218270}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -14733,7 +14733,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1702380795886444886}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -19621,7 +19621,7 @@ ParticleSystem:
   m_GameObject: {fileID: 2674379812118367034}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -24509,7 +24509,7 @@ ParticleSystem:
   m_GameObject: {fileID: 3396554673906734907}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -29397,7 +29397,7 @@ ParticleSystem:
   m_GameObject: {fileID: 5947908642209118189}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -34294,7 +34294,7 @@ ParticleSystem:
   m_GameObject: {fileID: 6001731840551130707}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -39179,7 +39179,7 @@ GameObject:
   - component: {fileID: 1435044225050712982}
   - component: {fileID: 6411221136256600028}
   m_Layer: 0
-  m_Name: Granade
+  m_Name: GrenadeExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39193,10 +39193,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6824186702531863888}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8706551487436372307}
   - {fileID: 6466872271588348886}
@@ -39211,7 +39211,7 @@ Transform:
   - {fileID: 8124712046672808534}
   - {fileID: 3948238325751241050}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1435044225050712982
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -39221,7 +39221,7 @@ ParticleSystem:
   m_GameObject: {fileID: 6824186702531863888}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -44109,7 +44109,7 @@ ParticleSystem:
   m_GameObject: {fileID: 7319734869580051911}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -49024,7 +49024,7 @@ ParticleSystem:
   m_GameObject: {fileID: 8111943649835084836}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -53912,7 +53912,7 @@ ParticleSystem:
   m_GameObject: {fileID: 8665815260141907396}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -58827,7 +58827,7 @@ ParticleSystem:
   m_GameObject: {fileID: 8948566292999265822}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 1.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
