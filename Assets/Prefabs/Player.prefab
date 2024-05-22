@@ -29,7 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 571168040667394474}
   m_Father: {fileID: 2101883330564736862}
@@ -4915,14 +4915,14 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.14559555
         value: 0
-        inSlope: 1.4075501
-        outSlope: 1.4075501
+        inSlope: 0.23393229
+        outSlope: 0.23393229
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.22605364
+        outWeight: 0.31838432
       - serializedVersion: 3
         time: 1
         value: 0
@@ -4994,8 +4994,8 @@ GameObject:
   - component: {fileID: 2550567291517965521}
   - component: {fileID: 8350670706090897187}
   - component: {fileID: 4773499370393397785}
-  - component: {fileID: 865624835214213223}
   - component: {fileID: 7794691534062531639}
+  - component: {fileID: 684558162064143035}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -5121,7 +5121,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2607127457901805963}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2ede873a2a7b604cb1effc70639e915, type: 3}
   m_Name: 
@@ -5190,20 +5190,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementAxis: {x: 0, y: 0}
   ShootAxis: {x: 0, y: 0}
---- !u!114 &865624835214213223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2607127457901805963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ede206ad1b263a44d81c4d2760739987, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 0
-  _maxHealth: 10
 --- !u!114 &7794691534062531639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5219,8 +5205,51 @@ MonoBehaviour:
   _keySlots:
   - {fileID: 0}
   - {fileID: 0}
+  _weaponSlot: {fileID: 0}
   _grenadeSlot: {fileID: 0}
+  _switchWeaponHint: {fileID: 0}
   _keylockHint: {fileID: 0}
+  _playerWeapon: {fileID: 0}
+  _playerGrenade: {fileID: 0}
+--- !u!114 &684558162064143035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2607127457901805963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2196ec057fec0ad4f88b93e5a9406b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 0
+  _maxHealth: 50
+  _lifePanel: {fileID: 0}
+  _lifeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 7.28661
+      outSlope: 7.28661
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0
+      outWeight: 0.6928943
+    - serializedVersion: 3
+      time: 1
+      value: 10
+      inSlope: 62.410637
+      outSlope: 62.410637
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.1280632
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5172730671207179004
 GameObject:
   m_ObjectHideFlags: 0
@@ -5249,7 +5278,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.07, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2371086204661493526}

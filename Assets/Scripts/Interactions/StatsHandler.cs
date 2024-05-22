@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class StatsHandler : MonoBehaviour
 {
-    [SerializeField] int _health;
-    [SerializeField] private int _maxHealth = 10;
+    [SerializeField] protected int _health;
+    [SerializeField] protected int _maxHealth = 10;
 
-    private void Start() => _health = _maxHealth;
+    protected virtual void Start() => _health = _maxHealth;
 
-    public void ReceiveDamage(int damageAmount)
+    public virtual void ReceiveDamage(int damageAmount)
     {
         _health -= damageAmount;
         if (_health <= 0) Die();
