@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,9 @@ public class PlayerStandaloneInput : MonoBehaviour
 
     private Gamepad _gamepad;
     private CustomInput _customInput;
+
+    private InputAction _switchWeapon;
+    public Action Input_SwitchWeapon;
 
     private void Awake() => _customInput = new CustomInput();
 
@@ -39,7 +43,24 @@ public class PlayerStandaloneInput : MonoBehaviour
         gamepad.SetMotorSpeeds(0f,0f);
     }
 
-    private void OnEnable() => _customInput.Enable();
-    private void OnDisable() => _customInput.Disable();
+    private void SwitchWeapon(InputAction.CallbackContext ctx)
+    {
+        if (Input_SwitchWeapon != null) Input_SwitchWeapon.Invoke();
+    }
+
+    private void OnEnable()
+    {
+        _customInput.Enable();
+        
+        _switchWeapon = _customInput.Player.SwitchWeapon;
+        _switchWeapon.Enable();
+        _switchWeapon.performed += SwitchWeapon;
+    }
+
+    private void OnDisable()
+    {
+        _customInput.Disable();
+        _switchWeapon.Disable();
+    }
 
 }

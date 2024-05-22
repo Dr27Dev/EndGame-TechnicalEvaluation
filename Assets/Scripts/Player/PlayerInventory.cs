@@ -11,6 +11,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private Image[] _keySlots;
     [SerializeField] private Image _weaponSlot;
     [SerializeField] private Image _grenadeSlot;
+    [SerializeField] private GameObject _switchWeaponHint;
     [SerializeField] private TextMeshProUGUI _keylockHint;
 
     [SerializeField] private PlayerWeapon _playerWeapon;
@@ -30,8 +31,11 @@ public class PlayerInventory : MonoBehaviour
     {
         foreach (var keySlot in _keySlots) keySlot.gameObject.SetActive(false);
         _grenadeSlot.gameObject.SetActive(false);
+        _switchWeaponHint.SetActive(false);
         SwitchWeapon(0);
         _keylockHint.text = "";
+        if (!GameManager.Instance.IsMobile)
+            GetComponent<PlayerController>().StandaloneInput.Input_SwitchWeapon += SwitchWeapon;
     }
 
     public void AddKey(Pickup_Key key)
@@ -40,14 +44,27 @@ public class PlayerInventory : MonoBehaviour
         _keySlots[key.DoorCode].gameObject.SetActive(true);
     }
 
-    public void EnableGrenade() => _grenadeSlot.gameObject.SetActive(true);
+    public void EnableGrenade()
+    {
+        _grenadeSlot.gameObject.SetActive(true);
+        if (!GameManager.Instance.IsMobile) _switchWeaponHint.SetActive(true);
+    }
     
     public void SwitchWeapon()
     {
-        if (_grenadeSlot.gameObject.activeSelf)
+        if (!_playerWeapon.enabled)
         {
-            _playerWeapon.enabled = !_playerWeapon.enabled;
-            _playerGrenade.enabled = !_playerGrenade.enabled;
+            _playerWeapon.enabled = true;
+            _playerGrenade.enabled = false;
+            _weaponSlot.color = new Color(1,1,1, 1);
+            _grenadeSlot.color = new Color(1,1,1, 0.3f);
+        }
+        else if (_grenadeSlot.gameObject.activeSelf)
+        {
+            _playerWeapon.enabled = false;
+            _playerGrenade.enabled = true;
+            _grenadeSlot.color = new Color(1,1,1, 1);
+            _weaponSlot.color = new Color(1,1,1, 0.3f);
         }
     }
 
