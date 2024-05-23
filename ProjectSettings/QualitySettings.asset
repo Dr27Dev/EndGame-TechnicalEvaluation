@@ -57,7 +57,7 @@ QualitySettings:
     terrainMaxTrees: 50
     excludedTargetPlatforms: []
   - serializedVersion: 3
-    name: Balanced
+    name: Enhanced
     pixelLightCount: 1
     shadows: 1
     shadowResolution: 0

@@ -12,7 +12,9 @@ public class PlayerStandaloneInput : MonoBehaviour
     private CustomInput _customInput;
 
     private InputAction _switchWeapon;
+    private InputAction _pause;
     public Action Input_SwitchWeapon;
+    public Action Input_Pause;
 
     private void Awake() => _customInput = new CustomInput();
 
@@ -48,6 +50,11 @@ public class PlayerStandaloneInput : MonoBehaviour
         if (Input_SwitchWeapon != null) Input_SwitchWeapon.Invoke();
     }
 
+    private void Pause(InputAction.CallbackContext ctx)
+    {
+        if (Input_Pause != null) Input_Pause.Invoke();
+    }
+
     private void OnEnable()
     {
         _customInput.Enable();
@@ -55,12 +62,18 @@ public class PlayerStandaloneInput : MonoBehaviour
         _switchWeapon = _customInput.Player.SwitchWeapon;
         _switchWeapon.Enable();
         _switchWeapon.performed += SwitchWeapon;
+        
+        _pause = _customInput.Player.Pause;
+        _pause.Enable();
+        _pause.performed += Pause;
+        
     }
 
     private void OnDisable()
     {
         _customInput.Disable();
         _switchWeapon.Disable();
+        _pause.Disable();
     }
 
 }
