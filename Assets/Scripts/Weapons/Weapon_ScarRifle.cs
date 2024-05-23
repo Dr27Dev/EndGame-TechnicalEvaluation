@@ -14,6 +14,8 @@ public class Weapon_ScarRifle : MonoBehaviour
     [SerializeField] private float _bulletSpeed = 10f;
     [SerializeField] private float _shootDelay = 0.5f;
     [SerializeField] private WeaponTarget _target = WeaponTarget.Enemy;
+
+    [SerializeField] private CharacterAudio _characterAudio;
     
     private float _shootTimer;
     private bool _isShooting;
@@ -65,6 +67,7 @@ public class Weapon_ScarRifle : MonoBehaviour
         Bullet bullet = GetBulletFromPool();
         bullet.ShotBullet(_bulletSpawnPos, _bulletSpeed);
         _muzzleVFX.Play();
+        _characterAudio.Fire();
     }
     
     protected void SetBulletPool(int poolSize)

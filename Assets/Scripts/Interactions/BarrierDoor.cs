@@ -9,6 +9,7 @@ public class BarrierDoor : MonoBehaviour
     [SerializeField] private float _transitionDuration = 0.5f;
     [SerializeField] private Collider _barrierCollider;
     [SerializeField] private int _doorCode = 0;
+    [SerializeField] private AudioSource _openDoorSFX;
     
     private Material _keylockMat;
     private bool _isDoorOpen;
@@ -27,6 +28,7 @@ public class BarrierDoor : MonoBehaviour
         _doorClosedVFX.Stop(true);
         _doorClosedVFX.Clear(true);
         _openDoorVFX.Play();
+        _openDoorSFX.Play();
         SetDoorOpacity(0);
         _barrierCollider.enabled = false;
         _isDoorOpen = true;
