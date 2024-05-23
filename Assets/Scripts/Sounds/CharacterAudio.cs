@@ -47,11 +47,7 @@ public class CharacterAudio : MonoBehaviour
         Vector3 rayOrigin = transform.position + Vector3.up * 1.5f;
         if (Physics.Raycast(rayOrigin, Vector3.down, out var hit, _rayLength, _groundLayers))
         {
-            if (hit.collider.CompareTag("Grass"))
-            {
-                print("pastico");
-                return GroundType.Grass;
-            }
+            if (hit.collider.CompareTag("Grass")) return GroundType.Grass;
         }
         return GroundType.Wood;
     }

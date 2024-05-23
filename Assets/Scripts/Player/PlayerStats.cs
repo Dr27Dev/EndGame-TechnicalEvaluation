@@ -6,6 +6,7 @@ public class PlayerStats : StatsHandler
     [SerializeField] private RawImage _lifePanel;
     [SerializeField] private AnimationCurve _lifeCurve;
     [SerializeField] private ParticleSystem _deathVFX;
+    [SerializeField] private DeathScreen _deathScreen;
     
     protected override void Start()
     {
@@ -33,6 +34,7 @@ public class PlayerStats : StatsHandler
         var deathFX = Instantiate(_deathVFX);
         deathFX.transform.position = transform.position;
         deathFX.Play();
+        _deathScreen.Die();
         Destroy(deathFX, 1);
     }
 }
